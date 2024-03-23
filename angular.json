@@ -3,5 +3,108 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "PokeApi": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/poke-api",
+      "sourceRoot": "projects/poke-api/src",
+      "prefix": "isdi",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/poke-api",
+            "index": "projects/poke-api/src/index.html",
+            "browser": "projects/poke-api/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/poke-api/tsconfig.app.json",
+            "assets": [
+              "projects/poke-api/src/favicon.ico",
+              "projects/poke-api/src/assets"
+            ],
+            "styles": [
+              "projects/poke-api/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "PokeApi:build:production"
+            },
+            "development": {
+              "buildTarget": "PokeApi:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "PokeApi:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/poke-api/tsconfig.spec.json",
+            "assets": [
+              "projects/poke-api/src/favicon.ico",
+              "projects/poke-api/src/assets"
+            ],
+            "styles": [
+              "projects/poke-api/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/poke-api/**/*.ts",
+              "projects/poke-api/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
