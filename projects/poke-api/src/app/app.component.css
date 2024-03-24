@@ -1,1 +1,37 @@
+* {
+  box-sizing: border-box;
+}
 
+ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  margin: 20px;
+}
+li {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+li:hover {
+  background-color: #eaeaea;
+}
+
+li img {
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+}
+
+li p {
+  margin: 0;
+  font-size: 17px;
+  color: #333;
+}
